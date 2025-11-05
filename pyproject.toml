@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "recipes"
+version = "0.1.0"
+description = "dummy description"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.3"
+flet = "^0.28.3"
+sqlmodel = "^0.0.27"
+flake8 = "^7.3.0"
+mypy = "^1.18.2"
+isort = "^7.0.0"
+invoke = "^2.2.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pyinstaller = "^6.16.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+ignore_missing_imports = true

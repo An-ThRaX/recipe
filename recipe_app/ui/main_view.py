@@ -4,6 +4,7 @@ from ui.elements.add_recipe import AddRecipe
 from ui.grid import build_recipe_grid
 from ui.theme import MainTheme
 
+
 def main_view(page: ft.Page):
     MainTheme().apply_theme(page)
 

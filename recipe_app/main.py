@@ -1,11 +1,8 @@
-import os
-import sys
 import warnings
 
 import flet as ft
 from db import init_db
 from ui.main_view import main_view
-
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 

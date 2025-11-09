@@ -1,11 +1,12 @@
-from db import engine
-from db.models import Recipe
-from sqlmodel import Session
-from flet import ControlEvent
-from sqlalchemy import select
-
 import random
 import string
+
+from db import engine
+from db.models import Recipe
+from flet import ControlEvent
+from sqlalchemy import select
+from sqlmodel import Session
+
 
 def random_string(n):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
@@ -26,10 +27,11 @@ def add_recipe(
         session.add(recipe)
         session.commit()
 
+
 # this will be used as temp btn
 def add_pseudo_recipe(e: ControlEvent):
     with Session(engine) as session:
-        recipe= Recipe(
+        recipe = Recipe(
             title=random_string(5),
             ingredients=random_string(10),
             instructions=random_string(10)
@@ -37,6 +39,7 @@ def add_pseudo_recipe(e: ControlEvent):
         session.add(recipe)
         print(f'recipe {recipe.title} added')
         session.commit()
+
 
 def fetch_all_recipes():
     with Session(engine) as session:

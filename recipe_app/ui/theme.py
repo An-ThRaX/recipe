@@ -1,5 +1,6 @@
 import flet as ft
 
+
 class MainTheme():
     def __init__(self):
         # if a variable, mode is parsed (e.g light/dark), the theme
@@ -15,4 +16,3 @@ class MainTheme():
         page.scroll = self.scroll
         page.horizontal_alignment = self.horizontal_alignment
         page.vertical_alignment = self.vertical_alignment
-        page.bgcolor = self.bg_color

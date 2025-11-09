@@ -17,7 +17,7 @@ def add_recipe(
     title: str,
     ingredients: str,
     instructions: str,
-):
+) -> None:
     with Session(engine) as session:
         recipe = Recipe(
             title=title,
@@ -29,7 +29,7 @@ def add_recipe(
 
 
 # this will be used as temp btn
-def add_pseudo_recipe(e: ControlEvent):
+def add_pseudo_recipe(e: ControlEvent) -> None:
     with Session(engine) as session:
         recipe = Recipe(
             title=random_string(5),
@@ -43,7 +43,9 @@ def add_pseudo_recipe(e: ControlEvent):
 
 def fetch_all_recipes():
     with Session(engine) as session:
-        recipes = session.exec(select(Recipe)).scalars().all()
+        recipes = session.exec(
+            select(Recipe)
+        ).scalars().all()
         return [
             {
                 'title': r.title,

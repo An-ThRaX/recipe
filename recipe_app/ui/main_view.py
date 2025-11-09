@@ -2,13 +2,10 @@ import flet as ft
 from services.recipes import fetch_all_recipes
 from ui.elements.add_recipe import AddRecipe
 from ui.grid import build_recipe_grid
-
+from ui.theme import MainTheme
 
 def main_view(page: ft.Page):
-    page.title = "Retetar"
-    page.horizontal_alignment = ft.CrossAxisAlignment.START
-    page.vertical_alignment = ft.MainAxisAlignment.START
-    page.scroll = "adaptive"
+    MainTheme().apply_theme(page)
 
     # Left catalogue (categories)
     catalogue = ft.Column(

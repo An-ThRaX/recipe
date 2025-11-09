@@ -6,7 +6,7 @@ def run(c):
     """
     Run the app in web mode - hot reload enabled
     """
-    c.run("flet run recipe_app/main.py  -w -r", pty=True)
+    c.run("flet run recipe_app/main.py -w -r", pty=True)
 
 
 @task

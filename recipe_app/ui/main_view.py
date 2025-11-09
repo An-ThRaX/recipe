@@ -22,7 +22,7 @@ def main_view(page: ft.Page):
         spacing=10,
     )
 
-    recipes = [{"title": f"Recipe {i+1}", "desc": "Short description"} for i in range(12)]
+    recipes = [{"title": f"Recipe {i+1}", "description": "Short description"} for i in range(13)]
     recipe_grid = build_recipe_grid(recipes)
     grid_container = ft.Container(
         content=recipe_grid,

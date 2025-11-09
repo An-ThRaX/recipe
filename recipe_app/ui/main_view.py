@@ -1,6 +1,6 @@
 import flet as ft
+from ui.elements.add_recipe import AddRecipe
 from ui.grid import build_recipe_grid
-from services.recipes import add_recipe
 
 
 def main_view(page: ft.Page):
@@ -32,8 +32,14 @@ def main_view(page: ft.Page):
 
     # Main layout: horizontal
     layout = ft.Row(
-        [
-            catalogue,
+        controls=[
+            ft.Column(
+                controls=[
+                    AddRecipe(),
+                    catalogue,
+                ],
+                spacing=20,
+            ),
             ft.VerticalDivider(),
             grid_container,
         ],

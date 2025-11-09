@@ -1,4 +1,5 @@
 import flet as ft
+from services.recipes import fetch_all_recipes
 from ui.elements.add_recipe import AddRecipe
 from ui.grid import build_recipe_grid
 
@@ -22,14 +23,17 @@ def main_view(page: ft.Page):
         spacing=10,
     )
 
-    recipes = [{"title": f"Recipe {i+1}", "description": "Short description"} for i in range(13)]
-    recipe_grid = build_recipe_grid(recipes)
+    # build the grid with recipe cards
+    recipe_grid = build_recipe_grid(
+        fetch_all_recipes()
+    )
+
     grid_container = ft.Container(
         content=recipe_grid,
         expand=True,
         padding=10,
     )
-
+    page.update()
     # Main layout: horizontal
     layout = ft.Row(
         controls=[

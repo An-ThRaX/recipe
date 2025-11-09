@@ -2,6 +2,7 @@ from db import engine
 from db.models import Recipe
 from sqlmodel import Session
 from flet import ControlEvent
+from sqlalchemy import select
 
 import random
 import string
@@ -36,3 +37,14 @@ def add_pseudo_recipe(e: ControlEvent):
         session.add(recipe)
         print(f'recipe {recipe.title} added')
         session.commit()
+
+def fetch_all_recipes():
+    with Session(engine) as session:
+        recipes = session.exec(select(Recipe)).scalars().all()
+        return [
+            {
+                'title': r.title,
+                'description': r.ingredients,
+            }
+            for r in recipes
+        ]

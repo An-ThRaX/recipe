@@ -15,12 +15,14 @@ def random_string(n):
 # this will have to be used as the add btn on a formular
 def add_recipe(
     title: str,
+    category_id: int,
     ingredients: str,
     instructions: str,
 ) -> None:
     with Session(engine) as session:
         recipe = Recipe(
             title=title,
+            category_id=category_id,
             ingredients=ingredients,
             instructions=instructions
         )
@@ -34,7 +36,8 @@ def add_pseudo_recipe(e: ControlEvent) -> None:
         recipe = Recipe(
             title=random_string(5),
             ingredients=random_string(10),
-            instructions=random_string(10)
+            instructions=random_string(10),
+            category_id=1
         )
         session.add(recipe)
         print(f'recipe {recipe.title} added')

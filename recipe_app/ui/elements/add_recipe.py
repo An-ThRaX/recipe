@@ -2,7 +2,8 @@ import flet as ft
 from services.recipes import add_pseudo_recipe
 
 
-class AddRecipe(ft.ElevatedButton):
+
+class AddRecipeButton(ft.ElevatedButton):
     def __init__(self):
         super().__init__(
             text='Adauga',

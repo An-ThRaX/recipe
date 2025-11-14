@@ -1,7 +1,7 @@
 import flet as ft
 from services.categories import fetch_all_categories
 from services.recipes import add_pseudo_recipe, fetch_all_recipes
-from ui.elements.add_recipe import AddRecipe
+from ui.elements.add_recipe import AddRecipeButton
 from ui.grid import build_recipe_grid
 from ui.theme import MainTheme
 
@@ -43,7 +43,7 @@ def main_view(page: ft.Page):
         controls=[
             ft.Column(
                 controls=[
-                    AddRecipe(),
+                    AddRecipeButton(),
                     catalogue,
                 ],
                 spacing=20,

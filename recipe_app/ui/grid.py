@@ -2,7 +2,7 @@ import flet as ft
 from ui.elements.recipe_card import RecipeCard
 
 
-def build_recipe_grid(recipes):
+def build_recipe_grid(recipes) -> ft.Column:
     rows = []
     # slice 3 recipes per row
     for i in range(0, len(recipes), 3):

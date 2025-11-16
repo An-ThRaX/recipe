@@ -1,11 +1,11 @@
-from typing import Optional, List
+from typing import List, Optional
 
-from sqlmodel import Field, SQLModel, Relationship
+from sqlmodel import Field, Relationship, SQLModel
 
 
 class Recipe(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    
+
     # foreigh key linking to Category table
     category_id: int = Field(foreign_key='category.id')
     category: Optional['Category'] = Relationship(back_populates='recipes')

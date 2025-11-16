@@ -1,54 +1,49 @@
 import flet as ft
-from services.categories import fetch_all_categories
-from services.recipes import add_pseudo_recipe, fetch_all_recipes
-from ui.elements.add_recipe import AddRecipeButton
-from ui.grid import build_recipe_grid
+from ui.elements.add_recipe_btn import AddRecipeButton
+from ui.elements.build_catalogue_container import build_catalogue
+from ui.elements.build_recipes_container import build_recipes_container
 from ui.theme import MainTheme
 
 
 def main_view(page: ft.Page):
     MainTheme().apply_theme(page)
 
-    # build the grid with recipe cards
-    recipe_grid = build_recipe_grid(
-        fetch_all_recipes()
-    )
+    # Construct the recipes container
+    recipes_container = build_recipes_container()
 
-    recipes_container = ft.Container(
-        content=recipe_grid,
-        expand=True,
-        padding=10,
-    )
+    # Construct the catalogue container
+    catalogue = build_catalogue()
 
-    def on_add_recipe(e):
-        # TODO 1: i got to change this to make use of AddRecipe() instead of add_pseudo_recipe
-        # TODO remove this and call the actual AddRecipe
-        add_pseudo_recipe()
-        recipes_container.content = build_recipe_grid(fetch_all_recipes())
+    # Reload the UI on changes
+    def refresh_recipes():
+        recipes_container.content = build_recipes_container().content
+        catalogue.controls = build_catalogue().controls
+
         page.update()
 
-
-
-    # Left catalogue (categories)
-    catalogue = ft.Column(
-        [ft.Text("Catalogue", size=20, weight="bold")] +
-        [ft.Text(c.title) for c in fetch_all_categories()],
-        width=200,
-        spacing=10,
+    side_bar = ft.Container(
+        content=ft.Column(
+            controls=[
+                AddRecipeButton(page, refresh_recipes),
+                catalogue,
+            ],
+            spacing=20,
+            width=250,
+        ),
+        padding=10
     )
 
-    page.update()
     # Main layout: horizontal
     layout = ft.Row(
+        # the main page with all its elements
         controls=[
-            ft.Column(
-                controls=[
-                    AddRecipeButton(),
-                    catalogue,
-                ],
-                spacing=20,
+            side_bar,
+            # the rest of the screen, with the cards
+            ft.Container(
+                width=20,
+                bgcolor=ft.Colors.WHITE,
+                height=page.height
             ),
-            ft.VerticalDivider(),
             recipes_container,
         ],
         expand=True,

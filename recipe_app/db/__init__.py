@@ -6,4 +6,5 @@ engine = create_engine("sqlite:///recipes.db", echo=False)
 def init_db():
     SQLModel.metadata.create_all(engine)
 
+
 init_db()

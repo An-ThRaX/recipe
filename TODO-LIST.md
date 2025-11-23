@@ -8,13 +8,18 @@
         - Home btn - will return the user to root
         - Add new recipe
             - Shall open a modal, that will have the required fields
-            - Shall blur the background while the modal is loaded
+                - `done, it is wired to the BE`
+                - `adds a new item, on Add, it refreshes the page and catalogue`
             - Shall NOT close when click around it - only cancel or add
+                - `done`
             - Shall have Add and Cancel buttons
+                - `done`
                 - If fields are populated, the Cancel shall require confirmation
+                    - `done; if the cancel is pressed while the form is partially filled, confirmation is required`
             - Shall have an option to load an image
                 - it shall be resized (to be decided if and how)
         - Categories list - will show N main categories of recipes (e.g. favorites, desert, soup, main dish)
+            - `done, new categories are added to the list`
         - Delete an existing recipe
             - Will require confirmation on deletion
     - Main screen will either hold latest viewed recipes, or a theme background, or favorites

@@ -9,9 +9,9 @@ class AddRecipeButton(ft.ElevatedButton):
         self.on_added_callback = on_added_callback
 
         super().__init__(
-            text='Adauga',
+            text='New recipe',
             icon=ft.Icons.ADD_CIRCLE,
-            width=100,
+            width=150,
             height=40,
             on_click=self._handle_click
         )
